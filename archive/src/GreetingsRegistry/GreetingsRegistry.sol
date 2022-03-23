@@ -9,6 +9,7 @@ contract GreetingsRegistry is Proxied {
     mapping(address => string) public messages;
     string public _prefix;
     string public _newVariable;
+    string public _newVariable2;
 
     function initialize(string memory prefix) public proxied {
         _prefix = prefix;
