@@ -10,8 +10,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   await deploy('GreetingsRegistry', {
     from: deployer,
     proxy: {
-      proxyContract: "OpenZeppelinTransparentProxy",
-      viaAdminContract: 'DefaultProxyAdmin',
+      proxyContract: "AdminUpgradeabilityProxy",
+      viaAdminContract: 'ProxyAdmin',
       execute: {
         methodName: "initialize",
         args: ["Hello World"]
