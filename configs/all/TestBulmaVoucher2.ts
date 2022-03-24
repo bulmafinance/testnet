@@ -3,11 +3,11 @@
 
 var config = {
     erc20Token: { 
-        deployNew: true,  // Will deploy a new token if true
+        deployNew: false,  // Will deploy a new token if true
         name: "TestBulmaFinance2",
         symbol: "tBULMA2",
         totalSupply: 9000, // in standard units (decimals: 18)
-        address: "" // Leave empty if deployNew is true
+        address: "0x47D169d396eb52d7D4f6276CBAcbba4aeE358aC8" // Leave empty if deployNew is true
     },
 }
 

@@ -24,9 +24,13 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
             `${config.erc20Token.symbol} Investment Certificate`,
             `ic${config.erc20Token.symbol}`, `https://api.bulmafinance/ic${config.erc20Token.symbol}/`,
             `https://api.bulmafinance/ic${config.erc20Token.symbol}/meta/contract`]
-      }
+      },
     },
-    
+
+    // One time, deployment failed here with "cannot estimate gas; transaction may fail or may require manual gas limit"
+    // Then I couldn't replicate it. Simply redeploying will redeploy the undeployed contracts.
+    // Not sure if below line would help in case the error shows up again
+    //gasLimit: 10000000, 
     log: true,
     autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   });
@@ -35,4 +39,4 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
 export default func;
 func.id = 'deploy_vesting_pool'; // id required to prevent reexecution
-func.tags = ["FullDeployment", "TestFullDeployment", "NewVoucher"];
+func.tags = ["FullDeployment", "NewVoucher", "ICToken"];

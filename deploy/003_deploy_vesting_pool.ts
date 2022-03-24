@@ -18,8 +18,6 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     erc20Address = config.erc20Token.address;
   }
 
-  console.log(`Underlying ERC20 at ${erc20Address}`)
-
   await deploy(`VestingPool_${config.erc20Token.name.replace(/\s/g, "")}`, {
     from: deployer,
     contract: "VestingPool",
@@ -40,4 +38,4 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
 export default func;
 func.id = 'deploy_vesting_pool'; // id required to prevent reexecution
-func.tags = ["FullDeployment", "TestFullDeployment", "NewVoucher"];
+func.tags = ["FullDeployment", "NewVoucher", 'VestingPool'];

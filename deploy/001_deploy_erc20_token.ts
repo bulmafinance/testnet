@@ -19,4 +19,4 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
 export default func;
 func.id = 'deploy_erc20_token'; // id required to prevent reexecution
-func.tags = ['TestFullDeployment', 'NewVoucher']; // Only run this when testing for full deployment
+func.tags = ['FullDeployment', 'NewVoucher', 'Token']; // Only run this when testing for full deployment
