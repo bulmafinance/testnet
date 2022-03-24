@@ -83,11 +83,23 @@ const config: HardhatUserConfig = {
       url: "https://stardust.metis.io/?owner=588",
       accounts:
         [PRIVATE_KEY, PRIVATE_KEY2],
+      verify: {
+        etherscan: {
+          apiKey: "api-key",
+          apiUrl: "https://stardust-explorer.metis.io",
+        },
+      },
     },
     andromeda: {
       url: "https://andromeda.metis.io/?owner=1088",
       accounts:
         [PRIVATE_KEY, PRIVATE_KEY2],
+      verify: {
+        etherscan: {
+          apiKey: "api-key",
+          apiUrl: "https://andromeda-explorer.metis.io",
+        },
+      },
     },
   },
   paths: {
