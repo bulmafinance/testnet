@@ -26,7 +26,7 @@ contract VestingPool is IVestingPool {
     address internal _underlying;
     bool internal _initialized;
 
-    address public admin;
+    address public _admin;
     address public pendingAdmin;
     address public manager;
     uint256 internal _totalAmount;
@@ -39,7 +39,7 @@ contract VestingPool is IVestingPool {
     string internal _baseExternalURI;
 
     modifier onlyAdmin() {
-        require(msg.sender == admin, "only admin");
+        require(msg.sender == _admin, "only admin");
         _;
     }
 
@@ -50,7 +50,7 @@ contract VestingPool is IVestingPool {
 
     function initialize(address underlying_) public {
         require(_initialized == false, "already initialized");
-        admin = msg.sender;
+        _admin = msg.sender;
 
         if (underlying_ != EthAddressLib.ethAddress()) {
             IERC20(underlying_).totalSupply();
@@ -423,7 +423,7 @@ contract VestingPool is IVestingPool {
     }
 
     function _setPendingAdmin(address newPendingAdmin) public {
-        require(msg.sender == admin, "only admin");
+        require(msg.sender == _admin, "only admin");
 
         // Save current value, if any, for inclusion in log
         address oldPendingAdmin = pendingAdmin;
@@ -442,16 +442,16 @@ contract VestingPool is IVestingPool {
         );
 
         // Save current values for inclusion in log
-        address oldAdmin = admin;
+        address oldAdmin = _admin;
         address oldPendingAdmin = pendingAdmin;
 
         // Store admin with value pendingAdmin
-        admin = pendingAdmin;
+        _admin = pendingAdmin;
 
         // Clear the pending value
         pendingAdmin = address(0);
 
-        emit NewAdmin(oldAdmin, admin);
+        emit NewAdmin(oldAdmin, _admin);
         emit NewPendingAdmin(oldPendingAdmin, pendingAdmin);
     }
 

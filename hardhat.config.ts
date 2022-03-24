@@ -29,15 +29,44 @@ const config: HardhatUserConfig = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 2000,
+            runs: 1000,
           },
         },
       },
     ],
+    overrides: { // This is needed because ICToken contract code size exceeds 24576. This setting is also applied in solv's code
+      "src/voucher/ICToken.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+         }
+      },
+      "src/solver/Solver.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        }
+      },
+      "src/token/ERC20Token.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+         }
+      }
+    }
   },
   namedAccounts: {
     deployer: 0,
-    secondary: 1
+    secondary: 1 
   },
   networks: {
     hardhat: {

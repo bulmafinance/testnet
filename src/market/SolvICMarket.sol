@@ -89,7 +89,7 @@ contract SolvICMarket is ISolvICMarket, PriceManager {
     uint24 public nextSaleId;
     address payable public pendingAdmin;
     uint24 public nextTradeId;
-    address payable public admin;
+    address payable public _admin;
     bool public initialized;
     uint16 internal constant PERCENTAGE_BASE = 10000;
 
@@ -103,13 +103,13 @@ contract SolvICMarket is ISolvICMarket, PriceManager {
     uint16 public repoFeeRate;
 
     modifier onlyAdmin() {
-        require(msg.sender == admin, "only admin");
+        require(msg.sender == _admin, "only admin");
         _;
     }
 
     modifier onlyAllowAddressManager(address icToken_) {
         require(
-            msg.sender == admin ||
+            msg.sender == _admin ||
                 allowAddressManagers[icToken_].contains(msg.sender),
             "only manager"
         );
@@ -120,7 +120,7 @@ contract SolvICMarket is ISolvICMarket, PriceManager {
 
     function initialize(ISolver solver_) public {
         require(initialized == false, "already initialized");
-        admin = msg.sender;
+        _admin = msg.sender;
         nextSaleId = 1;
         nextTradeId = 1;
         _setSolver(solver_);
@@ -697,7 +697,7 @@ contract SolvICMarket is ISolvICMarket, PriceManager {
             ERC20TransferHelper.getCashPrior(icToken_) >= reduceAmount_,
             "insufficient cash"
         );
-        ERC20TransferHelper.doTransferOut(icToken_, admin, reduceAmount_);
+        ERC20TransferHelper.doTransferOut(icToken_, _admin, reduceAmount_);
         emit WithdrawFee(icToken_, reduceAmount_);
     }
 
@@ -780,7 +780,7 @@ contract SolvICMarket is ISolvICMarket, PriceManager {
     }
 
     function _setPendingAdmin(address payable newPendingAdmin) public {
-        require(msg.sender == admin, "only admin");
+        require(msg.sender == _admin, "only admin");
 
         // Save current value, if any, for inclusion in log
         address oldPendingAdmin = pendingAdmin;
@@ -799,16 +799,16 @@ contract SolvICMarket is ISolvICMarket, PriceManager {
         );
 
         // Save current values for inclusion in log
-        address oldAdmin = admin;
+        address oldAdmin = _admin;
         address oldPendingAdmin = pendingAdmin;
 
         // Store admin with value pendingAdmin
-        admin = pendingAdmin;
+        _admin = pendingAdmin;
 
         // Clear the pending value
         pendingAdmin = address(0);
 
-        emit NewAdmin(oldAdmin, admin);
+        emit NewAdmin(oldAdmin, _admin);
         emit NewPendingAdmin(oldPendingAdmin, pendingAdmin);
     }
 }

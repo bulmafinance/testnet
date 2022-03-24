@@ -19,7 +19,7 @@ contract ICToken is IICToken, IVNFTErc20Container, VNFTCore {
     using SafeMathUpgradeable for uint256;
     using SafeMathUpgradeable for uint64;
 
-    address public admin;
+    address public _admin;
     address public pendingAdmin;
 
     bool internal _notEntered;
@@ -29,7 +29,7 @@ contract ICToken is IICToken, IVNFTErc20Container, VNFTCore {
     IVestingPool public vestingPool;
 
     modifier onlyAdmin() {
-        require(msg.sender == admin, "only admin");
+        require(msg.sender == _admin, "only admin");
         _;
     }
 
@@ -49,7 +49,7 @@ contract ICToken is IICToken, IVNFTErc20Container, VNFTCore {
         string calldata baseURI_,
         string calldata contractURI_
     ) external {
-        admin = msg.sender;
+        _admin = msg.sender;
         VNFTCore._initialize(name_, symbol_, baseURI_, contractURI_);
 
         _setVestingPool(vestingPool_);
@@ -60,7 +60,7 @@ contract ICToken is IICToken, IVNFTErc20Container, VNFTCore {
     }
 
     function owner() external view virtual returns (address) {
-        return admin;
+        return _admin;
     }
 
     function setContractURI(string memory uri_) external virtual onlyAdmin {
@@ -503,7 +503,7 @@ contract ICToken is IICToken, IVNFTErc20Container, VNFTCore {
     }
 
     function _setPendingAdmin(address newPendingAdmin) external {
-        require(msg.sender == admin, "only admin");
+        require(msg.sender == _admin, "only admin");
 
         // Save current value, if any, for inclusion in log
         address oldPendingAdmin = pendingAdmin;
@@ -522,16 +522,16 @@ contract ICToken is IICToken, IVNFTErc20Container, VNFTCore {
         );
 
         // Save current values for inclusion in log
-        address oldAdmin = admin;
+        address oldAdmin = _admin;
         address oldPendingAdmin = pendingAdmin;
 
         // Store admin with value pendingAdmin
-        admin = pendingAdmin;
+        _admin = pendingAdmin;
 
         // Clear the pending value
         pendingAdmin = address(0);
 
-        emit NewAdmin(oldAdmin, admin);
+        emit NewAdmin(oldAdmin, _admin);
         emit NewPendingAdmin(oldPendingAdmin, pendingAdmin);
     }
 
