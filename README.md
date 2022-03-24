@@ -1,3 +1,10 @@
+# Notes
+
+
+
+```npx hardhat etherscan-verify --network stardust --api-url "https://stardust-explorer.metis.io" --license MIT --solc-input```
+```npx hardhat etherscan-verify --network andromeda --api-url "https://andromeda-explorer.metis.io" --license MIT --solc-input```
+
 # Boilerplate for ethereum solidity smart contract development
 
 ## INSTALL
