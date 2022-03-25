@@ -1,22 +1,14 @@
 {
-  "name": "template-ethereum-contracts",
+  "name": "bulmafinance-vouchers-market",
   "version": "0.1.0",
-  "description": "Template to develop ethereum smart contracts",
+  "description": "BulmaFinance's vouchers (financial NFTs) market smart contract and deployments",
   "private": true,
   "engines": {
     "node": ">= 14.0.0"
   },
-  "repository": "github:wighawag/template-ethereum-contracts",
-  "author": "wighawag",
+  "repository": "github:bulmafinance/bulmafinance-vouchers-market",
+  "author": "Triv <cryptotriv@gmail.com>",
   "license": "MIT",
-  "keywords": [
-    "ethereum",
-    "smart-contracts",
-    "template",
-    "boilerplate",
-    "hardhat",
-    "solidity"
-  ],
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.12",
     "@nomiclabs/hardhat-etherscan": "^3.0.3",
