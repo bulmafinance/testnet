@@ -1,16 +1,17 @@
 # BulmaFinance Vouchers and Voucher Market Smart Contracts
-## INSTALL
+## Install
 
 ```bash
 npm install
 ```
 
 ## Deployment
-1. Create a deployment config in ./configs/all
-2. Copy-Paste it to ./configs/current.ts - this will be the current config used
-3. Use the following hardhat-deploy tags (e.g. ```--tags <tag>```):
-    - ```FullDeployment```: A new complete deployment - deploys "ERC20Token" if enabled in config, then deploys "Solver", "VestingPool", "ICToken" and "Market"
-    - ```NewVoucher```: Only deploys contracts for creating a new Voucher with the ERC20 token underlying specified in config - deploys "ERC20Token" if enabled in config, then deploys "VestingPool" and "ICToken" while reusing the same "Solver" and "Market"
+1. Copy ".env.example" and rename as ".env". Fill in the environment variables. 
+2. Create a deployment config in ./configs/all
+3. Copy-Paste the contents to ./configs/current.ts - this will be the current config used
+4. Use the following hardhat-deploy tags (e.g. ```--tags <tag>```):
+    - ```FullVoucherDeployment```: A new complete deployment - deploys "ERC20Token" if enabled in config, then deploys "Solver", "VestingPool", "ICToken" and "Market"
+    - ```NewVoucher```: Only deploys contracts for creating a new Voucher with the ERC20 token underlying specified in config - deploys "ERC20Token" if enabled in config, then deploys "VestingPool" and "ICToken" while reusing the same "Solver"
     - ```ERC20Token```: Only deploy "ERC20Token"
     - ```Solver```: Only deploy "Solver"
     - ```VestingPool```: Only deploy "VestingPool" 
