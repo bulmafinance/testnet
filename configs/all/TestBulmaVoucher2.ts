@@ -8,7 +8,7 @@ var config = {
         name: "TestBulmaFinance2",
         symbol: "tBULMA2",
         totalSupply: 9000, // in standard units (decimals: 18)
-        address: "0x47D169d396eb52d7D4f6276CBAcbba4aeE358aC8" // Leave empty if deployNew is true
+        address: "0x5d001e1741A2514C33034dd6eCD5C05D887463cE" // Leave empty if deployNew is true
     },
     
     // Used only in Convertible Voucher deployment
