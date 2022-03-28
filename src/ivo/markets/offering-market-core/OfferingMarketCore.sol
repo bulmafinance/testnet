@@ -141,7 +141,7 @@ abstract contract OfferingMarketCore is
 
     modifier onlyVoucherManager(address voucher_) {
         require(
-            msg.sender == admin ||
+            msg.sender == _admin ||
                 _voucherManagers[voucher_].contains(msg.sender),
             "only manager"
         );
@@ -587,7 +587,7 @@ abstract contract OfferingMarketCore is
     {
         ERC20TransferHelper.doTransferOut(
             currency_,
-            payable(admin),
+            payable(_admin),
             reduceAmount_
         );
         emit WithdrawFee(currency_, reduceAmount_);

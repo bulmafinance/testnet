@@ -2,8 +2,9 @@
 // Then copy-paste the configuration into /deploy/configs/current.ts
 
 var config = {
+    // Used in Vesting Voucher and Convertible Voucher deployment
     erc20Token: { 
-        deployNew: false,  // Will deploy a new token if true
+        deployNew: false,  // If true, we either get from a previous deployment by this repo, or deploy a new token.
         name: "Wrapped Ether",
         symbol: "WETH",
         totalSupply: 20000000, // in standard units (decimals: 18), only used if deployNew is true

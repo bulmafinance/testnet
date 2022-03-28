@@ -181,7 +181,7 @@ abstract contract VoucherCore is VNFTCoreV2, AdminControl {
     }
 
     function owner() external view virtual returns (address) {
-        return admin;
+        return _admin;
     }
 
     function voucherType() external view virtual returns (Constants.VoucherType) {}

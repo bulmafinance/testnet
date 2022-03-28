@@ -10,7 +10,7 @@ var config = {
         totalSupply: 9000, // in standard units (decimals: 18)
         address: "" // Leave empty if deployNew is true
     },
-
+    
     // Used only in Convertible Voucher deployment
     convertibleVoucher: {
         // Used in the Convertible Pool

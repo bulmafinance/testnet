@@ -10,6 +10,7 @@ npm install
 2. Create a deployment config in ./configs/all
 3. Copy-Paste the contents to ./configs/current.ts - this will be the current config used
 4. Use any of the following hardhat-deploy tags (e.g. ```--tags <tag>```):
+    - ```FullDeployment```: Deploys everything - used for testing.
     - Vesting Vouchers and Market (Complete Deployments):
         - ```FullVestingVoucherDeployment```: A new complete deployment - deploys "ERC20Token" if enabled in config, then deploys "Solver", "VestingPool", "ICToken" and "Market"
         - ```NewVestingVoucher```: Only deploys contracts for creating a new Vesting Voucher with the ERC20 token underlying specified in config - deploys "ERC20Token" if enabled in config, then deploys "VestingPool" and "ICToken" while reusing the same "Solver"
@@ -45,10 +46,20 @@ npx hardhat deploy --network andromeda --tags <tag>
 ## Contract Verification
 ### Testnet (Stardust)
 ```bash
-npx hardhat etherscan-verify --network stardust --license MIT --solc-input
+npx hardhat etherscan-verify --network stardust --license MIT --solc-input --sleep
 ```
 
 ### Mainnet (Andromeda)
 ```bash
-npx hardhat etherscan-verify --network andromeda --license MIT --solc-input
+npx hardhat etherscan-verify --network andromeda --license MIT --solc-input --sleep
 ```
+
+## Deployment Tests
+Test the following deployments to test deployments:
+
+1. ```FullDeployment```
+2. ```FullVestingVoucherDeployment```, ```FullIVODeployment```, then change config and deploy ```NewVestingVoucher```, ```NewConvertibleVoucher```, ```NewFlexibleVoucher```
+
+## Todos
+- [] Implement missing functions in StringConvertor.sol
+- [] Implement a new price Oracle for Metis network. It should inherit from IPriceManager.

@@ -110,7 +110,7 @@ contract SolvConvertibleMarketplace is
 
     modifier onlyAllowAddressManager(address voucher_) {
         require(
-            msg.sender == admin ||
+            msg.sender == _admin ||
                 allowAddressManagers[voucher_].contains(msg.sender),
             "only manager"
         );
@@ -723,7 +723,7 @@ contract SolvConvertibleMarketplace is
     {
         ERC20TransferHelper.doTransferOut(
             currency_,
-            payable(admin),
+            payable(_admin),
             reduceAmount_
         );
         emit WithdrawFee(currency_, reduceAmount_);

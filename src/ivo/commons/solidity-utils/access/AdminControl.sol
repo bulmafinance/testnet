@@ -10,16 +10,16 @@ abstract contract AdminControl is Initializable, ContextUpgradeable {
     event NewAdmin(address oldAdmin, address newAdmin);
     event NewPendingAdmin(address oldPendingAdmin, address newPendingAdmin);
 
-    address public admin;
+    address public _admin;
     address public pendingAdmin;
 
     modifier onlyAdmin() {
-        require(_msgSender() == admin, "only admin");
+        require(_msgSender() == _admin, "only admin");
         _;
     }
 
     function __AdminControl_init(address admin_) internal initializer {
-        admin = admin_;
+        _admin = admin_;
     }
 
     function setPendingAdmin(address newPendingAdmin_) external virtual onlyAdmin {
@@ -29,8 +29,8 @@ abstract contract AdminControl is Initializable, ContextUpgradeable {
 
     function acceptAdmin() external virtual {
         require(_msgSender() == pendingAdmin, "only pending admin");
-        emit NewAdmin(admin, pendingAdmin);
-        admin = pendingAdmin;
+        emit NewAdmin(_admin, pendingAdmin);
+        _admin = pendingAdmin;
         pendingAdmin = address(0);
     }
 
