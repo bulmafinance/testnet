@@ -34,8 +34,20 @@ const config: HardhatUserConfig = {
         },
       },
     ],
-    overrides: { // This is needed because ICToken contract code size exceeds 24576. This setting is also applied in solv's code
-      "src/voucher/ICToken.sol": {
+    // ERC20 overrides
+    overrides: {
+      "src/token/ERC20Token.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+         }
+      },
+
+      // Vesting Voucher overrides
+      "src/voucher/ICToken.sol": { // This is needed because ICToken contract code size exceeds 24576. This setting is also applied in solv's code
         version: '0.7.6',
         settings: {
           optimizer: {
@@ -53,15 +65,140 @@ const config: HardhatUserConfig = {
           },
         }
       },
-      "src/token/ERC20Token.sol": {
+
+      // IVO, Convertible and Flexible Vouchers overrides
+      "src/ivo/commons/solver/IVOSolver.sol": {
         version: '0.7.6',
         settings: {
           optimizer: {
             enabled: true,
             runs: 200,
           },
-         }
-      }
+        }
+      },
+      "src/ivo/vouchers/convertible-voucher/oracle/ManualPriceOracle.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/vouchers/convertible-voucher/oracle/PriceOracleManager.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+
+      // Convertible Voucher overrides
+      "src/ivo/vouchers/convertible-voucher/svgs/DefaultConvertibleVoucherSVG.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/vouchers/convertible-voucher/ConveritbleVoucherDescriptor.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/vouchers/convertible-voucher/ConvertiblePool.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/vouchers/convertible-voucher/ConvertibleVoucher.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+
+      // Flexible Vouchers overrides
+      "src/ivo/vouchers/flexible-date-vesting-voucher/svgs/DefaultFlexibleDateVestingVoucherSVG.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/vouchers/flexible-date-vesting-voucher/FlexibleDateVestingPool.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/vouchers/flexible-date-vesting-voucher/FlexibleDateVestingVoucher.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/vouchers/flexible-date-vesting-voucher/FlexibleDateVestingVoucherDescriptor.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+
+      // Markets
+      "src/ivo/markets/vesting-offering-market/InitialVestingOfferingMarket.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/markets/convertible-offering-market/InitialConvertibleOfferingMarket.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
+      "src/ivo/markets/convertible-marketplace/SolvConvertibleMarket.sol": {
+        version: '0.7.6',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1,
+          },
+        }
+      },
     }
   },
   namedAccounts: {
