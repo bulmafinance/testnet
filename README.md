@@ -61,5 +61,4 @@ Test the following deployments to test deployments:
 2. ```FullVestingVoucherDeployment```, ```FullIVODeployment```, then change config and deploy ```NewVestingVoucher```, ```NewConvertibleVoucher```, ```NewFlexibleVoucher```
 
 ## Todos
-- [] Implement missing functions in StringConvertor.sol
-- [] Implement a new price Oracle for Metis network. It should inherit from IPriceManager.
+- [ ] Implement a new price Oracle for Metis network. It should inherit from IPriceManager.
