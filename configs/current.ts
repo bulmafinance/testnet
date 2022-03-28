@@ -19,6 +19,11 @@ var config = {
 
         // Used in the Convertible Voucher
         unitDecimals: 26
+    },
+
+    // Used only in Flexible Voucher deployment
+    flexibleVoucher: {
+        unitDecimals: 18
     }
 }
 

@@ -140,4 +140,12 @@ library StringConvertor {
         return string(abi.encodePacked(pack, ']'));
     }
 
+    function datetimeToString(uint256 timestamp) internal pure returns (string memory) {
+
+    }
+
+    function dateToString(uint256 timestamp) internal pure returns (string memory) {
+        
+    }
+
 }

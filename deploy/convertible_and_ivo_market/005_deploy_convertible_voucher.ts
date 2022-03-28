@@ -8,7 +8,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments } = await hre;
 
   // Get our IVOSolver
-  var devployedIVOSolver = await deployments.get("IVOSolver");
+  var deployedIVOSolver = await deployments.get("IVOSolver");
 
   // Get our ConvertibleVoucherDescriptor
   var deployedCVDescriptor = await deployments.get("ConvertibleVoucherDescriptor");
@@ -54,7 +54,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
         methodName: "initialize",
         args: [deployedCVPool.address,
           deployedCVDescriptor.address,
-          devployedIVOSolver.address,
+          deployedIVOSolver.address,
           config.convertibleVoucher.unitDecimals,
           `${config.erc20Token.symbol} Convertible Voucher`,
           `cv${config.erc20Token.symbol}`]
