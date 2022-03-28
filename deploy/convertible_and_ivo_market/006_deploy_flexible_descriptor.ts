@@ -27,5 +27,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 };
 
 export default func;
-func.id = 'deploy_ivosolver'; // id required to prevent reexecution
-func.tags = ['FullIVODeployment', 'IVOSolver'];
+func.id = 'deploy_flexible_descriptor'; // id required to prevent reexecution
+func.tags = ['FullIVODeployment', 'FlexibleDescriptor'];

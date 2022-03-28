@@ -63,9 +63,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
     autoMine: true, // speed up deployment on local network (ganache, hardhat), no effect on live networks
   });
-
 };
 
 export default func;
-func.id = 'deploy_ivosolver'; // id required to prevent reexecution
-func.tags = ['FullIVODeployment', 'IVOSolver'];
+func.id = 'deploy_convertible_voucher'; // id required to prevent reexecution
+func.tags = ['FullIVODeployment', 'NewConvertibleVoucher'];
