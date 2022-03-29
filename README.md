@@ -55,6 +55,12 @@ npx hardhat etherscan-verify --network andromeda --license MIT --solc-input --sl
 ```
 
 ## Deployment Tests
+Run a local ganache chain via:
+
+```bash
+ganache -a 10 -k london -f https://stardust.metis.io/?owner=588 -l 12000000 -m brownie -p 8545 --chain.chainId 588
+```
+
 Test the following deployments on a testnet to test deployments:
 
 1. ```FullDeployment```
