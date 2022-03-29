@@ -67,6 +67,6 @@ Test the following deployments on a testnet to test deployments:
 2. ```FullVestingVoucherDeployment```, ```FullIVODeployment```, then change config and deploy ```NewVestingVoucher```, ```NewConvertibleVoucher```, ```NewFlexibleVoucher```
 
 ## Todos
-- [ ] Implement ChainlinkPriceOracle once Chainlink is on Metis.
+- [ ] Deploy ChainlinkPriceOracle once Chainlink is on Metis.
 - [ ] Implement a new price Oracle for Metis network. It should inherit from IPriceManager.
 
