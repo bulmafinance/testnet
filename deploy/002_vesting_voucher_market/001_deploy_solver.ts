@@ -20,4 +20,4 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
 export default func;
 func.id = 'deploy_solver'; // id required to prevent reexecution
-func.tags = ['FullDeployment','FullVestingVoucherDeployment', 'Solver'];
+func.tags = ['FullDeployment','FullVestingVoucherDeployment', "FullIVODeployment", 'Solver'];
